@@ -30,7 +30,6 @@ public class PlayerController : NetworkBehaviour
 	[Command]
 	void CmdFire()
 		{
-			Debug.Log("bullet spawned at: " + bulletSpawn.transform.position.x + ", " + bulletSpawn.transform.position.y);
 			// Create the Bullet from the Bullet Prefab
 			var bullet = (GameObject)Instantiate (
 				bulletPrefab,

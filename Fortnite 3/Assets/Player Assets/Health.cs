@@ -8,6 +8,8 @@ public class Health : NetworkBehaviour {
 
 	public RectTransform healthBar;
 	public bool destroyOnDeath;
+	public GameObject self;
+	private Animator animator;
 
 	public const int maxHealth = 100;
 
@@ -17,6 +19,7 @@ public class Health : NetworkBehaviour {
 
 	void Start ()
 	{
+		animator = GetComponent<Animator>();
 		if (isLocalPlayer)
 		{
 			spawnPoints = FindObjectsOfType<NetworkStartPosition>();		
@@ -33,11 +36,11 @@ public class Health : NetworkBehaviour {
 		currentHealth -= amount;
 		if (currentHealth <= 0)
 		{
-			if (destroyOnDeath)
-			{
-						Destroy(gameObject);
-			} 
-			else
+			if (animator != null) {
+				animator.SetBool("isIdle", false);
+				animator.SetBool("isDead", true);
+			}
+			if (!destroyOnDeath)
 			{
 				// existing Respawn code     
 				currentHealth = maxHealth;
@@ -48,6 +51,11 @@ public class Health : NetworkBehaviour {
 		}
 
 		healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
+	}
+
+	public void DestroyGameObject() {
+		Debug.Log("destroying: " + self);
+		Destroy(self);
 	}
 
 	void OnChangeHealth (int health)
