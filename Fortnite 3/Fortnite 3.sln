@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fortnite 3", "Assembly-CSharp.csproj", "{F6AD5BD0-09B4-7B78-66AE-C120783FC160}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{F6AD5BD0-09B4-7B78-66AE-C120783FC160}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
