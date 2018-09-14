@@ -37,7 +37,7 @@ public class PlayerController : NetworkBehaviour
 				bulletSpawn.rotation);
 
 			// Add velocity to the bullet
-			bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+			bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 25;
 
 			// Spawn the bullet on the clients
 			NetworkServer.Spawn(bullet);
