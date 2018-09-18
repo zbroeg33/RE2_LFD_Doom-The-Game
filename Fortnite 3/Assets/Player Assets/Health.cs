@@ -53,6 +53,10 @@ public class Health : NetworkBehaviour {
 		healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
 	}
 
+	public void DealDamageToPlayer() {
+		Debug.Log("Dealing damage to player");
+	}
+
 	public void DestroyGameObject() {
 		Debug.Log("destroying: " + self);
 		Destroy(self);

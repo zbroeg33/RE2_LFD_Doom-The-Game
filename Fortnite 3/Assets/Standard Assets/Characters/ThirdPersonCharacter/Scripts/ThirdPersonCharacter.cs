@@ -114,10 +114,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		public void AttemptToDamagePlayer() {
 			if ((player.transform.position - transform.position).magnitude <= 1.5f) {
 				//player.GetComponent<Health>();
-				Debug.Log("damage player");
+				Animator playerAnimator = player.GetComponent<Animator>();
+				if (playerAnimator != null) {
+					playerAnimator.SetTrigger("TakeDamage");
+				}
+				//Debug.Log("damage player");
 			    
 			} else {
-				Debug.Log("player escaped");
+				//Debug.Log("player escaped");
 			}
 		}
 
