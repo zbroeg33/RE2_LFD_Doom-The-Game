@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.496413, b: 0.5748175, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -113,48 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: ff001553ea3de4d11aa2ff4a14dc5067, type: 2}
---- !u!1001 &107011168
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4870778037724910, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 14.412178
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870778037724910, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870778037724910, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 5.0792265
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870778037724910, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870778037724910, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870778037724910, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870778037724910, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870778037724910, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 22025541ce96241499fac67a6ae2e3bd, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &179048691
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,8 +451,9 @@ MonoBehaviour:
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1358245474881298, guid: c8f34abb239e545e9b95f66f12525332, type: 2}
   - {fileID: 1300611964618398, guid: 0584839bceadb844fa31b1ca352056ba, type: 2}
+  - {fileID: 1826319144146748, guid: a864f74cc1fd54be088849a86e610a24, type: 2}
+  - {fileID: 0}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

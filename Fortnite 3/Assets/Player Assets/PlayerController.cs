@@ -9,7 +9,9 @@ public class PlayerController : NetworkBehaviour
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn; 
 
+
 	private int BulletsInClip = 0;
+
 
     void Update()
     {
@@ -41,9 +43,8 @@ public class PlayerController : NetworkBehaviour
 				bulletPrefab,
 				bulletSpawn.position,
 				bulletSpawn.rotation);
-
 			// Add velocity to the bullet
-			bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 50;
+			bullet.GetComponent<Rigidbody>().velocity = bulletSpawn.transform.forward * 50;
 
 			// Spawn the bullet on the clients
 			NetworkServer.Spawn(bullet);
