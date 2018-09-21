@@ -251,7 +251,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1300611964618398, guid: 0584839bceadb844fa31b1ca352056ba,
     type: 2}
+  bulletPrefab: {fileID: 1759298047790488, guid: 05876ba7150394d519a2da44d9277e6f,
+    type: 2}
   numberOfEnemies: 4
+  numberOfBullets: 20
 --- !u!114 &739978111
 MonoBehaviour:
   m_ObjectHideFlags: 0
