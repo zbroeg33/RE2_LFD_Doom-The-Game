@@ -7,7 +7,9 @@ public class PlayerController : NetworkBehaviour
 {
 
 	public GameObject bulletPrefab;
-	public Transform bulletSpawn;
+	public Transform bulletSpawn; 
+
+	private int BulletsInClip = 0;
 
     void Update()
     {
@@ -23,7 +25,11 @@ public class PlayerController : NetworkBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Mouse0))
 		{
-			CmdFire();
+			if(BulletsInClip >=1) {
+				CmdFire();
+			} else {
+				Debug.Log("No Ammo");
+			}
 		}
     }
 
@@ -46,6 +52,15 @@ public class PlayerController : NetworkBehaviour
 			Destroy(bullet, 4.0f);
 		}
 
+
+void OnTriggerEnter(Collider other) {
+		 if(other.gameObject.CompareTag("Pickup")) {
+		 	Destroy(other.gameObject); 
+		 	Debug.Log("We hit the pickup object");
+		 	BulletsInClip++;
+			 Debug.Log("bullets in Clip" + BulletsInClip);
+		 }	
+}
 	public override void OnStartLocalPlayer()
     {
         GetComponent<MeshRenderer>().material.color = Color.blue;
