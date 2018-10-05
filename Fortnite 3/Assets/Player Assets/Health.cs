@@ -10,6 +10,8 @@ public class Health : NetworkBehaviour {
 	public bool destroyOnDeath;
 	public GameObject self;
 	private Animator animator;
+	public Animator playerCharAnimator;
+	public Animator playerAnimator;
 
 	public const int maxHealth = 100;
 
@@ -36,16 +38,27 @@ public class Health : NetworkBehaviour {
 		currentHealth -= amount;
 		if (currentHealth <= 0)
 		{
-			if (animator != null) {
-				animator.SetBool("isIdle", false);
-				animator.SetBool("isDead", true);
-			}
-			if (!destroyOnDeath)
-			{
-				// existing Respawn code     
-				currentHealth = maxHealth;
-				// called on the Server, but invoked on the Clients
-				RpcRespawn(); 
+			if (playerCharAnimator != null) {
+				playerAnimator.SetBool("deathBool", true);
+				playerCharAnimator.SetBool("deathBool", true);
+				playerCharAnimator.SetBool("walkBool", false);
+				playerCharAnimator.SetBool("runBool", false);
+				playerCharAnimator.SetBool("runLeftBool", false);
+				playerCharAnimator.SetBool("runRightBool", false);
+				playerCharAnimator.SetBool("runBackBool", false);
+			} else {
+
+				if (animator != null) {
+					animator.SetBool("isIdle", false);
+					animator.SetBool("isDead", true);
+				}
+				if (!destroyOnDeath)
+				{
+					// existing Respawn code     
+					currentHealth = maxHealth;
+					// called on the Server, but invoked on the Clients
+					RpcRespawn(); 
+				}
 			}
 			
 		}
@@ -72,6 +85,9 @@ public class Health : NetworkBehaviour {
 	{
 		if (isLocalPlayer)
 		{
+			currentHealth = maxHealth;
+			playerAnimator.SetBool("deathBool", false);
+			playerCharAnimator.SetBool("deathBool", false);
 			// Set the spawn point to origin as a default value
 			Vector3 spawnPoint = Vector3.zero;
 

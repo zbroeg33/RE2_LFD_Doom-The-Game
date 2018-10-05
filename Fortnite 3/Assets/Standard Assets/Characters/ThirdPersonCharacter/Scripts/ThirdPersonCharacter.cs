@@ -31,6 +31,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		private GameObject player = null;
 
+		private Animator playerCharAnimator;
+
+		private Animator playerAnimator;
+
 		void Start()
 		{
 			m_Animator = GetComponent<Animator>();
@@ -80,8 +84,26 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void UpdateAnimator(Vector3 move)
 		{
+
+
 			if (player == null) {
 				player = GameObject.FindWithTag("Player");
+			} else {
+				if (playerCharAnimator == null || playerAnimator == null) {
+					playerAnimator = player.GetComponent<Animator>();
+					foreach (Transform child in player.transform) {
+						if (child.ToString() == "Character_Apocalypse (UnityEngine.Transform)") {
+							playerCharAnimator = child.GetComponent<Animator>();
+							Debug.Log("found animator: " + playerCharAnimator);	
+						}
+					
+					}
+				}
+
+				/*if (playerAnimator == null) {
+					Debug.Log("player animator null... searching...");
+					playerAnimator = player.GetComponent<Animator>();
+				}*/
 			}
 
 			if (m_Animator != null) { 
@@ -113,10 +135,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		public void AttemptToDamagePlayer() {
 			if ((player.transform.position - transform.position).magnitude <= 1.5f) {
-				//player.GetComponent<Health>();
-				Animator playerAnimator = player.GetComponent<Animator>();
-				if (playerAnimator != null) {
-					playerAnimator.SetTrigger("TakeDamage");
+				
+				//Animator playerAnimator = player.GetComponent<Animator>();
+				if (playerCharAnimator != null && playerAnimator != null) {
+					playerCharAnimator.SetBool("walkBool", false);
+					playerCharAnimator.SetBool("runBool", false);
+					playerCharAnimator.SetBool("walkLeftBool", false);
+					playerCharAnimator.SetBool("walkRightBool", false);
+					playerCharAnimator.SetBool("walkBackBool", false);
+					
+					playerCharAnimator.SetTrigger("hitTrigger");
+
+					playerAnimator.SetTrigger("hitTrigger");
+				} else {
+					Debug.Log("one or both animators null");
 				}
 				//Debug.Log("damage player");
 			    
