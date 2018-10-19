@@ -11,13 +11,14 @@ public class PlayerController : NetworkBehaviour
 	public Animator charModelAnimator; 
 
 
-	private int BulletsInClip = 1;
+	private int BulletsInClip = 0;
 
-
+	
     void Update()
     {
 		if (!isLocalPlayer)
 		{
+			
 			return;
 		}
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
@@ -39,7 +40,7 @@ public class PlayerController : NetworkBehaviour
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
 
-		if (Input.GetKeyDown(KeyCode.Mouse0))
+		if (Input.GetKeyDown(KeyCode.Mouse0) && isLocalPlayer)
 		{
 			if(BulletsInClip >=1) {
 				CmdFire();
@@ -94,7 +95,7 @@ void OnTriggerEnter(Collider other) {
 		 	Destroy(other.gameObject); 
 		 	Debug.Log("We hit the pickup object");
 		 	BulletsInClip++;
-			 Debug.Log("bullets in Clip" + BulletsInClip);
+			 Debug.Log("bullets in Clip: " + BulletsInClip);
 		 }	
 }
 	public override void OnStartLocalPlayer()
