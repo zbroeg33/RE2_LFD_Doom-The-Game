@@ -22,6 +22,9 @@ public class Menu : MonoBehaviour {
         serverMenu.SetActive(false);
     }
 
+    public void QuitGame() {
+        Application.Quit();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
