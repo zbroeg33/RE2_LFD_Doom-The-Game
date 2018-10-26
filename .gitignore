@@ -39,5 +39,5 @@ sysinfo.txt
 *.unitypackage
 
 # Project files
-/Assets/Abandoned_Asylum/
- /Fortnite 3/Library/metadata/
+/Fortnite 3/Assets/Abandoned_Asylum/
+/Fortnite 3/Library/metadata/
