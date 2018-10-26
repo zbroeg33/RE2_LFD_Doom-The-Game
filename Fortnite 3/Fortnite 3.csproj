@@ -327,6 +327,8 @@
     <Compile Include="Assets\Player Assets\Health.cs" />
     <Compile Include="Assets\Player Assets\Player.cs" />
     <Compile Include="Assets\Player Assets\PlayerController.cs" />
+    <Compile Include="Assets\Player Assets\SetupLocalPlayer.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Weapon Assets\Bullet.cs" />
   </ItemGroup>
   <ItemGroup>
