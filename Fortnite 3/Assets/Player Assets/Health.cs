@@ -7,11 +7,14 @@ using UnityEngine.Networking;
 public class Health : NetworkBehaviour {
 
 	public RectTransform healthBar;
+	public RectTransform uiHealthBar;
 	public bool destroyOnDeath;
 	public GameObject self;
 	private Animator animator;
 	public Animator playerCharAnimator;
 	public Animator playerAnimator;
+	private ScoreCard scoreCard;
+	public Text text;
 
 	public const int maxHealth = 100;
 
@@ -21,6 +24,8 @@ public class Health : NetworkBehaviour {
 
 	void Start ()
 	{
+		scoreCard = FindObjectOfType<ScoreCard>();
+		scoreCard.text = text;
 		animator = GetComponent<Animator>();
 		if (isLocalPlayer)
 		{
@@ -36,6 +41,9 @@ public class Health : NetworkBehaviour {
 		}
 
 		currentHealth -= amount;
+		if (playerCharAnimator == null) {
+			scoreCard.AddToScore(15);
+		}
 		if (currentHealth <= 0)
 		{
 			if (playerCharAnimator != null) {
@@ -47,7 +55,8 @@ public class Health : NetworkBehaviour {
 				playerCharAnimator.SetBool("runRightBool", false);
 				playerCharAnimator.SetBool("runBackBool", false);
 			} else {
-
+				Debug.Log("figure out who killed zombie here...");
+				scoreCard.AddToScore(80);
 				if (animator != null) {
 					animator.SetBool("isIdle", false);
 					animator.SetBool("isDead", true);
@@ -64,6 +73,7 @@ public class Health : NetworkBehaviour {
 		}
 
 		healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
+		uiHealthBar.sizeDelta = new Vector2(currentHealth * 4, uiHealthBar.sizeDelta.y);
 	}
 
 	public void DealDamageToPlayer() {
@@ -78,6 +88,7 @@ public class Health : NetworkBehaviour {
 	void OnChangeHealth (int health)
 	{
 		healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+		uiHealthBar.sizeDelta = new Vector2(health * 4, uiHealthBar.sizeDelta.y);
 	}
 
 	[ClientRpc]

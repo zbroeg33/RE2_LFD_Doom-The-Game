@@ -363,7 +363,6 @@
     <Compile Include="Packages\com.unity.standardevents\Editor\Importer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Abandoned_Asylum\Read_me.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />

@@ -327,12 +327,9 @@
     <Compile Include="Assets\Player Assets\Health.cs" />
     <Compile Include="Assets\Player Assets\Player.cs" />
     <Compile Include="Assets\Player Assets\PlayerController.cs" />
-    <Compile Include="Assets\Player Assets\SetupLocalPlayer.cs" />
-    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Weapon Assets\Bullet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Abandoned_Asylum\Read_me.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
