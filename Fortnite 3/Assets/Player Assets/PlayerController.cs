@@ -45,7 +45,7 @@ public class PlayerController : NetworkBehaviour
 			if(BulletsInClip >=1) {
 				CmdFire();
 			} else {
-				Debug.Log("No Ammo");
+				//Debug.Log("No Ammo");
 			}
 		}
     }
@@ -80,22 +80,24 @@ public class PlayerController : NetworkBehaviour
 				bulletSpawn.position,
 				bulletSpawn.rotation);
 			// Add velocity to the bullet
-			bullet.GetComponent<Rigidbody>().velocity = bulletSpawn.transform.forward * 50;
+			//bullet.GetComponent<Rigidbody>().velocity = bulletSpawn.transform.forward * 50;
 
+			BulletsInClip--;
 			// Spawn the bullet on the clients
-			NetworkServer.Spawn(bullet);
-
+			if (NetworkServer.active) {
+				NetworkServer.Spawn(bullet);
+			}
 			// Destroy the bullet after 2 seconds
-			Destroy(bullet, 4.0f);
+			//Destroy(bullet, 4.0f);
 		}
 
 
 void OnTriggerEnter(Collider other) {
 		 if(other.gameObject.CompareTag("Pickup")) {
 		 	Destroy(other.gameObject); 
-		 	Debug.Log("We hit the pickup object");
+		 	//Debug.Log("We hit the pickup object");
 		 	BulletsInClip++;
-			 Debug.Log("bullets in Clip: " + BulletsInClip);
+			// Debug.Log("bullets in Clip: " + BulletsInClip);
 		 }	
 }
 	public override void OnStartLocalPlayer()

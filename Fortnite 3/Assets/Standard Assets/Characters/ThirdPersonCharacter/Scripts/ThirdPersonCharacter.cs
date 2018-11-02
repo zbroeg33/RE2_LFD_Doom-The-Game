@@ -94,7 +94,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 					foreach (Transform child in player.transform) {
 						if (child.ToString() == "Character_Apocalypse (UnityEngine.Transform)") {
 							playerCharAnimator = child.GetComponent<Animator>();
-							Debug.Log("found animator: " + playerCharAnimator);	
+							//Debug.Log("found animator: " + playerCharAnimator);	
 						}
 					
 					}
