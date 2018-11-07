@@ -12,16 +12,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Transform target;                                    // target to aim for
         private GameObject[] players;
 
+        private int i;
+
 
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
             agent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
-            players = GameObject.FindGameObjectsWithTag("Player");
-            if (players.Length > 0) {
-                target = players[0].transform;
-            }
+           
 	        agent.updateRotation = false;
 	        agent.updatePosition = true;
         }
@@ -29,16 +28,34 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Update()
         {
-            if (target != null) {
-                if ((target.position - transform.position).magnitude <= 25.0f) {
-                    agent.SetDestination(target.position);
-                }
-            } else {
-                players = GameObject.FindGameObjectsWithTag("Player");
-                if (players.Length > 0) {
-                    target = players[0].transform;
-                }
+             players = GameObject.FindGameObjectsWithTag("Player");
+            if (players.Length > 0) {
+                target = players[i].transform;
             }
+
+            GameObject closest = null;
+                    float distance = Mathf.Infinity;
+                    Vector3 postiion = players[i].transform.position;
+
+            foreach ( GameObject player in players) {
+                
+                Vector3 diff = player.transform.position - transform.position;
+                float curDistance = diff.sqrMagnitude;
+                if(curDistance < distance) {
+                    closest = player;
+                    distance = curDistance;
+                    agent.SetDestination(closest.transform.position);
+                }
+            // if (target != null) {
+            //     if ((target.position - transform.position).magnitude <= 25.0f) {
+            //         agent.SetDestination(target.position);
+            //     }
+            // } else {
+            //     players = GameObject.FindGameObjectsWithTag("Player");
+            //     if (players.Length > 0) {
+            //         target = players[0].transform;
+            //     }
+             }
             if (agent.remainingDistance > agent.stoppingDistance)
                 character.Move(agent.desiredVelocity, false, false);
             else
