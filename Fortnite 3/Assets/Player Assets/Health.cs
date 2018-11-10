@@ -7,14 +7,9 @@ using UnityEngine.Networking;
 public class Health : NetworkBehaviour {
 
 	public RectTransform healthBar;
-	public RectTransform uiHealthBar;
 	public bool destroyOnDeath;
 	public GameObject self;
 	private Animator animator;
-	public Animator playerCharAnimator;
-	public Animator playerAnimator;
-	private ScoreCard scoreCard;
-	public Text text;
 
 	public const int maxHealth = 100;
 
@@ -24,9 +19,7 @@ public class Health : NetworkBehaviour {
 
 	void Start ()
 	{
-		scoreCard = FindObjectOfType<ScoreCard>();
-		scoreCard.text = text;
-		animator = GetComponent<Animator>();
+		//animator = GetComponent<Animator>();
 		if (isLocalPlayer)
 		{
 			spawnPoints = FindObjectsOfType<NetworkStartPosition>();		
@@ -41,43 +34,27 @@ public class Health : NetworkBehaviour {
 		}
 
 		currentHealth -= amount;
-		if (playerCharAnimator == null) {
-			scoreCard.AddToScore(15);
-		}
+		Debug.Log("Health went down" + amount);
 		if (currentHealth <= 0)
 		{
-			if (playerCharAnimator != null) {
-				playerAnimator.SetBool("deathBool", true);
-				playerCharAnimator.SetBool("deathBool", true);
-				playerCharAnimator.SetBool("walkBool", false);
-				playerCharAnimator.SetBool("runBool", false);
-				playerCharAnimator.SetBool("runLeftBool", false);
-				playerCharAnimator.SetBool("runRightBool", false);
-				playerCharAnimator.SetBool("runBackBool", false);
-			} else {
-				Debug.Log("figure out who killed zombie here...");
-				scoreCard.AddToScore(80);
-				if (animator != null) {
-					animator.SetBool("isIdle", false);
-					animator.SetBool("isDead", true);
-				}
-				if (!destroyOnDeath)
-				{
-					// existing Respawn code     
-					currentHealth = maxHealth;
-					// called on the Server, but invoked on the Clients
-					RpcRespawn(); 
-				}
+			
+			/*if (animator != null) {
+				animator.SetBool("isIdle", false);
+				animator.SetBool("isDead", true);
+			} 
+			*/
+			DestroyGameObject();
+			if (!destroyOnDeath)
+			{
+				// existing Respawn code     
+				currentHealth = maxHealth;
+				// called on the Server, but invoked on the Clients
+				RpcRespawn(); 
 			}
 			
 		}
 
 		healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
-		uiHealthBar.sizeDelta = new Vector2(currentHealth * 4, uiHealthBar.sizeDelta.y);
-	}
-
-	public void DealDamageToPlayer() {
-		Debug.Log("Dealing damage to player");
 	}
 
 	public void DestroyGameObject() {
@@ -88,7 +65,6 @@ public class Health : NetworkBehaviour {
 	void OnChangeHealth (int health)
 	{
 		healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
-		uiHealthBar.sizeDelta = new Vector2(health * 4, uiHealthBar.sizeDelta.y);
 	}
 
 	[ClientRpc]
@@ -96,9 +72,6 @@ public class Health : NetworkBehaviour {
 	{
 		if (isLocalPlayer)
 		{
-			currentHealth = maxHealth;
-			playerAnimator.SetBool("deathBool", false);
-			playerCharAnimator.SetBool("deathBool", false);
 			// Set the spawn point to origin as a default value
 			Vector3 spawnPoint = Vector3.zero;
 

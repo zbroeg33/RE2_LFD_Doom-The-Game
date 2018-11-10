@@ -29,7 +29,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Update()
         {
              players = GameObject.FindGameObjectsWithTag("Player");
-            if (players.Length > 0) {
+            if (players.Length >= 0) {
                 target = players[i].transform;
             }
 

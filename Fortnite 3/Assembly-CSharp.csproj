@@ -55,14 +55,15 @@
   <ItemGroup>
      <Compile Include="Assets\Enemy Assets\EnemySpawner.cs" />
      <Compile Include="Assets\Player Assets\Billboard.cs" />
+     <Compile Include="Assets\Player Assets\FireProjectile.cs" />
      <Compile Include="Assets\Player Assets\Health.cs" />
      <Compile Include="Assets\Player Assets\Player.cs" />
      <Compile Include="Assets\Player Assets\PlayerController.cs" />
+     <Compile Include="Assets\Player Assets\Projectile.cs" />
      <Compile Include="Assets\Player Assets\SetupLocalPlayer.cs" />
      <Compile Include="Assets\ScoreCard.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Weapon Assets\Bullet.cs" />
-     <Compile Include="Assets\Weapon Assets\Projectile.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/Users/zacharybroeg/Documents/GitHub/RE2_LFD_Doom-The-Game/Fortnite 3/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
