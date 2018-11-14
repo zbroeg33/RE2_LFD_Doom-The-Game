@@ -1475,12 +1475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 224508806236608388}
-  uiHealthBar: {fileID: 0}
   destroyOnDeath: 1
   self: {fileID: 1300611964618398}
-  playerCharAnimator: {fileID: 0}
-  playerAnimator: {fileID: 0}
-  text: {fileID: 0}
   currentHealth: 100
 --- !u!114 &114761813483011422
 MonoBehaviour:

@@ -44,22 +44,22 @@ public class FireProjectile : NetworkBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-		 if(other.gameObject.CompareTag("PickUP")) {
+		 if(other.gameObject.CompareTag("Pickup")) {
 		 	Destroy(other.gameObject); 
 		 	Debug.Log("We hit the pickup object");
 		 	BulletsInClip++;
 			 Debug.Log("bullets in Clip" + BulletsInClip);
 		 }	
-         else if(other.gameObject.CompareTag("Monster")) {
-			 Debug.Log("Shot the Monster");
-			var hit = this.gameObject;
-			var health = hit.GetComponent<Health>();
-			Debug.Log(hit);
-			if(health != null) {
-				health.TakeDamage(10);
-                Destroy(instantiatedProjectile);
+        //  else if(other.gameObject.CompareTag("Zombie")) {
+		// 	 Debug.Log("Shot the Zombie");
+		// 	var hit = this.gameObject;
+		// 	var health = hit.GetComponent<Health>();
+		// 	Debug.Log(hit);
+		// 	if(health != null) {
+		// 		health.TakeDamage(10);
+        //         Destroy(instantiatedProjectile);
 				
-			}
-		 }
+		// 	}
+		//  }
     }
 }
