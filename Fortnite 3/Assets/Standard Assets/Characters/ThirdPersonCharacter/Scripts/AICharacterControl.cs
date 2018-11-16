@@ -44,8 +44,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if(curDistance < distance) {
                     closest = player;
                     distance = curDistance;
+                   
+                    if((closest.transform.position - transform.position).magnitude <= 25.0f) {
                     agent.SetDestination(closest.transform.position);
                 }
+                else  {
+                        agent.isStopped = true;
+                    }
             // if (target != null) {
             //     if ((target.position - transform.position).magnitude <= 25.0f) {
             //         agent.SetDestination(target.position);
@@ -55,7 +60,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             //     if (players.Length > 0) {
             //         target = players[0].transform;
             //     }
-             }
+                }
+                }
             if (agent.remainingDistance > agent.stoppingDistance)
                 character.Move(agent.desiredVelocity, false, false);
             else
