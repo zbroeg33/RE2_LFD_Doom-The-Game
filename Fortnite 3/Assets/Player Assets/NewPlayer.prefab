@@ -3365,7 +3365,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1826319144146748, guid: a864f74cc1fd54be088849a86e610a24,
     type: 2}
   projectileLaunchPoint: {fileID: 4784201741040994}
-  BulletsInClip: 0
+  BulletsInClip: 5
 --- !u!114 &114754275996913156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3478,7 +3478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 224992703331256394}
-  destroyOnDeath: 0
+  destroyOnDeath: 1
   self: {fileID: 1349074572021318}
   currentHealth: 100
 --- !u!114 &114973441812736638

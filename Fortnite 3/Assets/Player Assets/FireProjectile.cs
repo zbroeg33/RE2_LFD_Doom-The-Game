@@ -16,7 +16,7 @@ public class FireProjectile : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.F) && (isLocalPlayer)){
+        if((Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0))&& (isLocalPlayer)){
            if(BulletsInClip >=1) {
 				CmdFire();
 			} else {
@@ -47,7 +47,7 @@ public class FireProjectile : NetworkBehaviour {
 		 if(other.gameObject.CompareTag("Pickup")) {
 		 	Destroy(other.gameObject); 
 		 	Debug.Log("We hit the pickup object");
-		 	BulletsInClip++;
+		 	BulletsInClip+=3;
 			 Debug.Log("bullets in Clip" + BulletsInClip);
 		 }	
         //  else if(other.gameObject.CompareTag("Zombie")) {

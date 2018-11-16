@@ -14,9 +14,9 @@ public class EnemySpawner : NetworkBehaviour {
         for (int i=0; i < numberOfEnemies; i++)
         {
             var spawnPosition = new Vector3(
-                Random.Range(transform.position.x - 4.0f, transform.position.x + 4.0f),
+                Random.Range(transform.position.x - 40.0f, transform.position.x + 40.0f),
                 0.0f,
-                Random.Range(transform.position.z -4.0f, transform.position.z + 4.0f));
+                Random.Range(transform.position.z -40.0f, transform.position.z + 40.0f));
 
             var spawnRotation = Quaternion.Euler( 
                 0.0f, 
@@ -30,9 +30,9 @@ public class EnemySpawner : NetworkBehaviour {
         for (int i=0; i < numberOfBullets; i++)
         {
             var spawnPosition = new Vector3(
-                Random.Range(transform.position.x - 4.0f, transform.position.x + 4.0f),
+                Random.Range(transform.position.x - 40.0f, transform.position.x + 40.0f),
                 0.0f,
-                Random.Range(transform.position.z -4.0f, transform.position.z + 4.0f));
+                Random.Range(transform.position.z -40.0f, transform.position.z + 40.0f));
 
             var spawnRotation = Quaternion.Euler( 
                 0.0f, 

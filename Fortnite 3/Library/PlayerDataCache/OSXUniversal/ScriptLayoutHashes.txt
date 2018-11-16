@@ -1,9 +1,10 @@
 OSXStandalone
 PlayerPath?
-/Users/zacharybroeg/Desktop/fortnite3demo.app
+/Users/andrewpalmer/Documents/GitHub/RE2_LFD_Doom-The-Game/Fortnite 3/Fortnite3Final.app
 SceneListBegin?
 Assets/Scenes/networkLobby.unity
 Assets/Scenes/Main.unity
+Assets/Scenes/GameOver.unity
 SceneListEnd?
 378a70bd0380752a13aa9deb8e370218 Assembly-CSharp.dll:.FireProjectile
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
@@ -350,3 +351,4 @@ c8a41ce4eea7677f6dd2aa0e422a2f04 Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehav
 c31ff9acb65f7a15b5c6fd77c3314d83 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 486cd95c82d8305219c352c06b776e1f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 695c9335429d4798b6f74ca73c042ff4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MySceneManager

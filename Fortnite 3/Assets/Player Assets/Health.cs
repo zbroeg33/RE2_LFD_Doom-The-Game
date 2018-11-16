@@ -60,6 +60,13 @@ public class Health : NetworkBehaviour {
 	public void DestroyGameObject() {
 		Debug.Log("destroying: " + self);
 		Destroy(self);
+		if (isLocalPlayer) {
+			Camera camera = GameObject.FindObjectOfType<Camera>();//.enabled = true;
+			if (camera != null) {
+				camera.enabled = true;
+				camera.gameObject.SetActive(true);
+			}
+		}
 	}
 
 	void OnChangeHealth (int health)
