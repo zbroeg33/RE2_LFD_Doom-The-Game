@@ -24,33 +24,7 @@ public class PlayerController : NetworkBehaviour
 		
     }
 	void OnTriggerEnter(Collider other) {
-		//  if(other.gameObject.CompareTag("PickUP")) {
-		//  	Destroy(other.gameObject); 
-		//  	Debug.Log("We hit the pickup object");
-		//  	BulletsInClip++;
-		// 	 Debug.Log("bullets in Clip" + BulletsInClip);
-		//  }	
-		//  else 
-		if(other.gameObject.CompareTag("FogDamage")) {
-			 Debug.Log("Hit the fog");
-			var hit = this.gameObject;
-			var health = hit.GetComponent<Health>();
-			Debug.Log(hit);
-			if(health != null) {
-				health.TakeDamage(10);
-			}
-		 }
 		
-		else if(other.gameObject.CompareTag("Monster")) {
-			 Debug.Log("Hit by the Monster");
-			var hit = this.gameObject;
-			var health = hit.GetComponent<Health>();
-			Debug.Log(hit);
-			if(health != null) {
-				health.TakeDamage(10);
-				
-			}
-		 }
 	}
 
 

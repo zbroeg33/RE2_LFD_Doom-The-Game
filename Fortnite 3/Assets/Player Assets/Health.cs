@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 public class Health : NetworkBehaviour {
 
 	public RectTransform healthBar;
+	public RectTransform uiHealthBar;
 	public bool destroyOnDeath;
 	public GameObject self;
 	private Animator animator;
@@ -43,18 +44,25 @@ public class Health : NetworkBehaviour {
 				animator.SetBool("isDead", true);
 			} 
 			*/
-			DestroyGameObject();
+			
 			if (!destroyOnDeath)
 			{
 				// existing Respawn code     
 				currentHealth = maxHealth;
 				// called on the Server, but invoked on the Clients
 				RpcRespawn(); 
+			} else {
+				DestroyGameObject();
 			}
 			
 		}
 
 		healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
+		uiHealthBar.sizeDelta = new Vector2(currentHealth * 4, healthBar.sizeDelta.y);
+	}
+
+	public int GetHealth() {
+		return currentHealth;
 	}
 
 	public void DestroyGameObject() {
@@ -72,6 +80,7 @@ public class Health : NetworkBehaviour {
 	void OnChangeHealth (int health)
 	{
 		healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+		uiHealthBar.sizeDelta = new Vector2(currentHealth * 4, healthBar.sizeDelta.y);
 	}
 
 	[ClientRpc]

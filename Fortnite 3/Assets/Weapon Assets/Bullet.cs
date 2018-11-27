@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class Bullet : NetworkBehaviour {
-
 	void OnTriggerEnter(Collider collision)
     {
 		var hit = collision.gameObject;
@@ -17,6 +16,7 @@ public class Bullet : NetworkBehaviour {
 				Debug.Log("network server not active...");
 			}
 			health.TakeDamage(10);
+
 		}
     }
 
